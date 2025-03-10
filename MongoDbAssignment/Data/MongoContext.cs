@@ -4,8 +4,10 @@ public class MongoContext
 {
     private readonly IMongoDatabase _database;
 
-    public MongoContext(string connectionString, string dbName)
+    public MongoContext()
     {
+        string connectionString = File.ReadAllText("dbconn.txt").Trim();
+        string dbName = "Assignment";
         var client = new MongoClient(connectionString);
         _database = client.GetDatabase(dbName);
     }
